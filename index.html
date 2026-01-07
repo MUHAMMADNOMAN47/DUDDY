@@ -2,208 +2,711 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DUDDY • $DDY</title>
+  <title>DUDDY • Solana Meme Dog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="DUDDY ($DDY) — Solana meme, one ticker, community built to outlast candles."
-  />
 
   <!-- Manrope font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --bg: #020617;
+      --card-bg: radial-gradient(circle at 0% 0%, #020617 0, #020617 40%, #020617 100%);
+      --pill-border: rgba(255, 255, 255, 0.2);
+      --text-main: #f9fafb;
+      --text-soft: #9ca3af;
+      --accent-green: #22c55e;
+      --accent-cyan: #22d3ee;
+      --accent-purple: #a855f7;
+      --accent-orange: #f97316;
+      --ca-bg: #020617;
+      --ca-pill: #020617;
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 24px 60px rgba(0,0,0,0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(56,189,248,0.12), transparent 55%),
+        radial-gradient(circle at bottom, rgba(34,197,94,0.10), transparent 55%),
+        var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px 12px 40px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1120px;
+    }
+
+    /* Top nav ----------------------------------------------------- */
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.35),
+                  0 0 40px rgba(56, 189, 248, 0.4);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .nav-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .nav-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-title-main {
+      font-size: 15px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .nav-title-sub {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #6b7280;
+      letter-spacing: 0.12em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-pill {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: rgba(15,23,42,0.9);
+      color: #e5e7eb;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-pill span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22d3ee;
+      box-shadow: 0 0 10px rgba(34,211,238,0.9);
+    }
+
+    .nav-buy {
+      padding: 10px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22c55e, #22d3ee, #a855f7);
+      color: #0b1220;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 18px 45px rgba(34, 197, 94, 0.45);
+      white-space: nowrap;
+    }
+
+    .nav-buy span.icon {
+      font-size: 17px;
+    }
+
+    /* Main card --------------------------------------------------- */
+
+    .hero-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 0% -20%, rgba(56,189,248,0.25), transparent 55%),
+        radial-gradient(circle at 100% 120%, rgba(34,197,94,0.25), transparent 55%),
+        linear-gradient(135deg, #020617, #020617);
+      border: 1px solid rgba(148,163,184,0.35);
+      box-shadow: var(--shadow-soft);
+      padding: 28px 20px 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 24px;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out both;
+    }
+
+    @media (max-width: 900px) {
+      .hero-card {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 24px 18px 26px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-right {
+        align-self: stretch;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-card {
+        padding: 22px 16px 26px;
+      }
+    }
+
+    /* Badge over card --------------------------------------------- */
+    .status-bar {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22c55e, #22d3ee);
+      color: #020617;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 16px 40px rgba(16, 185, 129, 0.5);
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 15px rgba(22,163,74,0.9);
+    }
+
+    /* Orb / logo side --------------------------------------------- */
+
+    .hero-orbit-wrap {
+      padding-top: 36px;
+      padding-bottom: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-orbit {
+      position: relative;
+      width: min(340px, 80vw);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 0%, rgba(56,189,248,0.12), transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(34,197,94,0.18), transparent 55%),
+        radial-gradient(circle at center, #020617 0%, #020617 35%, #020617 100%);
+      box-shadow: 0 0 80px rgba(15,23,42,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 4px solid rgba(248,250,252,0.9);
+      overflow: visible;
+    }
+
+    .hero-orbit::before {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border-radius: 50%;
+      border: 2px solid rgba(148,163,184,0.35);
+      background:
+        radial-gradient(circle at 30% 0%, rgba(56,189,248,0.2), transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(34,197,94,0.25), transparent 55%),
+        radial-gradient(circle at center, #020617 0, #020617 50%, #020617 100%);
+      opacity: 0.8;
+    }
+
+    .hero-orbit::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      box-shadow: 0 0 120px rgba(34,197,94,0.55);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero-logo {
+      position: relative;
+      width: 72%;
+      height: 72%;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: float 5.5s ease-in-out infinite;
+      box-shadow:
+        0 0 0 3px rgba(148,163,184,0.6),
+        0 23px 50px rgba(0,0,0,0.95);
+    }
+
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Text side --------------------------------------------------- */
+
+    .hero-content {
+      padding-top: 82px;
+      padding-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-content {
+        padding-top: 12px;
+      }
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 4.2vw, 34px);
+      line-height: 1.2;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, #22c55e, #22d3ee, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-tagline {
+      font-size: 14px;
+      color: #e5e7eb;
+      max-width: 420px;
+    }
+
+    .hero-body {
+      font-size: 14px;
+      color: var(--text-soft);
+      max-width: 460px;
+    }
+
+    .hero-actions {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary {
+      flex: 1 1 150px;
+      min-width: 180px;
+      border-radius: 999px;
+      border: none;
+      padding: 14px 22px;
+      font-size: 15px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #22c55e, #22d3ee);
+      color: #020617;
+      box-shadow: 0 20px 50px rgba(16,185,129,0.55);
+    }
+
+    .btn-primary span.icon {
+      font-size: 18px;
+    }
+
+    .btn-outline {
+      flex: 1 1 150px;
+      min-width: 150px;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      background: rgba(15,23,42,0.92);
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.6);
+      backdrop-filter: blur(18px);
+    }
+
+    .btn-outline span.icon {
+      font-size: 18px;
+    }
+
+    /* CA card ----------------------------------------------------- */
+
+    .ca-card {
+      margin-top: 24px;
+      background: linear-gradient(to right, #020617, #020617);
+      border-radius: 28px;
+      border: 1px solid rgba(15,23,42,0.9);
+      padding: 16px 16px 16px;
+      box-shadow: 0 24px 55px rgba(0,0,0,0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .ca-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #e5e7eb;
+    }
+
+    .ca-status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+    }
+
+    .ca-label {
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #9ca3af;
+      font-size: 11px;
+    }
+
+    .ca-address-row {
+      width: 100%;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.14), transparent 45%),
+                  radial-gradient(circle at 100% 100%, rgba(34,197,94,0.16), transparent 45%),
+                  #020617;
+      border: 1px solid rgba(31,41,55,0.95);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .ca-address {
+      font-family: "Manrope", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13px;
+      color: #e5e7eb;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .copy-btn {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 999px;
+      border: none;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #f97316, #facc15);
+      color: #111827;
+      box-shadow: 0 20px 50px rgba(249,115,22,0.75);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .copy-btn.copied {
+      background: linear-gradient(135deg, #22c55e, #86efac);
+      color: #022c22;
+      box-shadow: 0 20px 50px rgba(34,197,94,0.7);
+    }
+
+    /* Social row -------------------------------------------------- */
+
+    .social-row {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .social-pill {
+      flex: 1 1 120px;
+      min-width: 120px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.18), transparent 55%),
+                  rgba(15,23,42,0.96);
+      color: #e5e7eb;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      backdrop-filter: blur(18px);
+    }
+
+    .social-pill span.badge {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34,197,94,0.9);
+    }
+
+    .social-pill.x   { background: radial-gradient(circle at 0 0, rgba(251,113,133,0.22), transparent 55%), rgba(15,23,42,0.96); }
+    .social-pill.tg  { background: radial-gradient(circle at 0 0, rgba(56,189,248,0.22), transparent 55%), rgba(15,23,42,0.96); }
+    .social-pill.dc  { background: radial-gradient(circle at 0 0, rgba(129,140,248,0.22), transparent 55%), rgba(15,23,42,0.96); }
+    .social-pill.wa  { background: radial-gradient(circle at 0 0, rgba(34,197,94,0.22), transparent 55%), rgba(15,23,42,0.96); }
+
+    /* Disclaimer -------------------------------------------------- */
+
+    .disclaimer {
+      margin-top: 14px;
+      font-size: 11px;
+      color: var(--text-soft);
+      max-width: 540px;
+    }
+
+    .disclaimer strong {
+      color: #e5e7eb;
+    }
+
+    /* Animations -------------------------------------------------- */
+
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="page-wrap">
-
-  <!-- NAVBAR -->
-  <header class="nav">
-    <div class="nav-inner">
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
       <div class="nav-left">
-        <div class="nav-logo-wrap">
-          <div class="nav-logo-glow"></div>
-          <!-- make sure this file exists: duddy-logo.png -->
-          <img src="duddy-logo.png" alt="DUDDY Logo" class="nav-logo">
+        <div class="nav-logo">
+          <img src="duddy-logo.png" alt="DUDDY logo" />
         </div>
-        <div class="nav-text">
-          <div class="nav-title">DUDDY • $DDY</div>
-          <div class="nav-sub">Solana meme — one ticker</div>
+        <div class="nav-title">
+          <div class="nav-title-main">DUDDY</div>
+          <div class="nav-title-sub">$DDY • SOLANA</div>
         </div>
       </div>
 
       <div class="nav-right">
-        <!-- Website button -> main site -->
-        <a
-          href="https://muhammadnoman47.github.io/ddy-website/"
-          target="_blank"
-          rel="noopener"
-          class="btn btn-outline"
-        >
-          Website
+        <a class="nav-pill" href="https://oman47.github.io" target="_blank" rel="noopener noreferrer">
+          <span class="dot"></span>
+          <span>Website</span>
         </a>
-        <!-- Buy now (update link later) -->
-        <a
-          href="#"
-          class="btn btn-primary"
-          id="buy-btn"
-        >
-          Buy now
+        <a class="nav-buy" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="icon">⚡</span>
+          <span>Buy $DDY</span>
         </a>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <div class="max-w">
+    <!-- HERO CARD -->
+    <main class="hero-card">
+      <!-- Status badge -->
+      <div class="status-bar">
+        <span class="status-dot"></span>
+        <span>$DDY • DUDDY</span>
+      </div>
 
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero-left">
-          <p class="hero-kicker">$DDY • Solana meme • One ticker</p>
-
-          <h1 class="hero-title">
-            Run with <span>DUDDY</span>.
-          </h1>
-
-          <p class="hero-sub">
-            Run with DUDDY — Solana meme, one ticker, community built to outlast candles. 🐶✨
-          </p>
-
-          <div class="hero-actions">
-            <a href="#" class="btn btn-primary">Buy now</a>
-            <a href="https://muhammadnoman47.github.io/ddy-website/" target="_blank" rel="noopener" class="btn btn-ghost">
-              Open full site
-            </a>
-          </div>
-
-          <!-- TOKEN ADDRESS BOX -->
-          <div class="address-card">
-            <div class="address-label">Token address</div>
-            <div class="address-row">
-              <!-- pump.fun / mint address placeholder -->
-              <code id="token-address">4W2jQLaQQH25HeKHiHAnxnan97pkVksZVj7rAgN7G9y8</code>
-              <button id="copy-address" class="btn-copy">Copy</button>
-            </div>
-            <div class="address-note">
-              Always verify the address from official DUDDY links before trading.
-            </div>
+      <!-- Orb + logo -->
+      <div class="hero-orbit-wrap">
+        <div class="hero-orbit">
+          <div class="hero-logo">
+            <img src="duddy-logo.png" alt="DUDDY mascot" />
           </div>
         </div>
+      </div>
 
-        <!-- RIGHT: BIG FLOATING LOGO -->
-        <div class="hero-right">
-          <div class="hero-orbit">
-            <div class="orbit-glow"></div>
-            <div class="orbit-ring orbit-ring-1"></div>
-            <div class="orbit-ring orbit-ring-2"></div>
-            <div class="orbit-ring orbit-ring-3"></div>
-            <img src="duddy-logo.png" alt="DUDDY mascot" class="hero-mascot">
-          </div>
-        </div>
-      </section>
+      <!-- Text + actions -->
+      <section class="hero-content">
+        <p class="eyebrow">One dog, one ticker, one pack — built for fun, culture, and real meme stamina.</p>
 
-      <!-- OPTIONAL CHART BLOCK (placeholder) -->
-      <section class="chart-section">
-        <div class="chart-header">
-          <div>
-            <h2 class="chart-title">$DDY market view</h2>
-            <p class="chart-sub">Plug in the live DEX chart when the pair is ready.</p>
-          </div>
-          <div class="chart-search">
-            <input
-              type="text"
-              placeholder="Search token / pair…"
-              class="chart-input"
-            />
-          </div>
-        </div>
+        <h1 class="hero-title">
+          RUN WITH <span class="gradient-text">DUDDY</span>
+        </h1>
 
-        <div class="chart-frame">
-          <!-- Replace this with live DEX iframe later -->
-          <div class="chart-placeholder">
-            <span>DEX chart embed coming soon.</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- SOCIAL LINKS -->
-      <section class="social-section">
-        <h2 class="social-title">Stay where DUDDY lives</h2>
-        <p class="social-sub">
-          Follow the official channels — no fake groups, no random links.
+        <p class="hero-tagline">
+          Solana meme, one ticker, community built to outlast candles. 🐶
         </p>
 
-        <div class="social-row">
-          <a href="https://x.com/official_duddy" target="_blank" rel="noopener" class="social-btn social-x">
-            <div class="social-icon">𝕏</div>
-            <div class="social-text">
-              <span class="social-label">X / Twitter</span>
-              <span class="social-handle">@official_duddy</span>
-            </div>
+        <p class="hero-body">
+          DUDDY is a meme-driven Solana coin with clean art, simple flow, and a community that actually
+          shows up for the dog.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="#" target="_blank" rel="noopener noreferrer">
+            <span class="icon">⚡</span>
+            <span>Buy DUDDY</span>
           </a>
 
-          <a href="https://t.me/duddyofficial_ddy" target="_blank" rel="noopener" class="social-btn social-tg">
-            <div class="social-icon">✈</div>
-            <div class="social-text">
-              <span class="social-label">Telegram</span>
-              <span class="social-handle">DUDDY Official</span>
-            </div>
-          </a>
-
-          <a href="https://discord.gg/aKgK2RDep" target="_blank" rel="noopener" class="social-btn social-dc">
-            <div class="social-icon">☰</div>
-            <div class="social-text">
-              <span class="social-label">Discord</span>
-              <span class="social-handle">DUDDY Hub</span>
-            </div>
-          </a>
-
-          <a href="https://whatsapp.com/channel/0029VbBmrsNHLHQY5eylWR2d" target="_blank" rel="noopener" class="social-btn social-wa">
-            <div class="social-icon">💬</div>
-            <div class="social-text">
-              <span class="social-label">WhatsApp</span>
-              <span class="social-handle">DUDDY Channel</span>
-            </div>
+          <a class="btn-outline" href="#" target="_blank" rel="noopener noreferrer">
+            <span class="icon">📈</span>
+            <span>View Chart</span>
           </a>
         </div>
+
+        <!-- Contract / copy -->
+        <div class="ca-card">
+          <div class="ca-header">
+            <span class="ca-status-dot"></span>
+            <span class="ca-label">CONTRACT ADDRESS</span>
+          </div>
+          <div class="ca-address-row">
+            <span class="ca-address" id="caAddress">
+              4W2jQLaQQH25HeKHiHAnxnan97pkVksZVj7rAgN7G9y8
+            </span>
+          </div>
+          <button class="copy-btn" id="copyBtn">Copy</button>
+        </div>
+
+        <!-- Social links -->
+        <div class="social-row">
+          <a class="social-pill x" href="https://x.com/official_duddy" target="_blank" rel="noopener noreferrer">
+            <span class="badge"></span>
+            <span>@official_duddy</span>
+          </a>
+
+          <a class="social-pill tg" href="https://t.me/duddyofficial_ddy" target="_blank" rel="noopener noreferrer">
+            <span class="badge"></span>
+            <span>Telegram</span>
+          </a>
+
+          <a class="social-pill dc" href="https://discord.gg/aKgK2RDep" target="_blank" rel="noopener noreferrer">
+            <span class="badge"></span>
+            <span>Discord</span>
+          </a>
+
+          <a class="social-pill wa" href="https://whatsapp.com/channel/0029VbBmrsNHLHQY5eylWR2d" target="_blank" rel="noopener noreferrer">
+            <span class="badge"></span>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+
+        <p class="disclaimer">
+          <strong>DUDDY</strong> is a meme token — not financial advice. Always verify the contract from
+          official links before trading.
+        </p>
       </section>
+    </main>
+  </div>
 
-    </div>
-  </main>
+  <script>
+    // Copy CA
+    const copyBtn = document.getElementById("copyBtn");
+    const caAddress = document.getElementById("caAddress");
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <span>DUDDY • $DDY — Solana meme, one ticker, community built to outlast candles.</span>
-      <span>© 2026 DUDDY • $DDY</span>
-    </div>
-  </footer>
-
-</div>
-
-<script>
-  // Copy token address
-  const copyBtn = document.getElementById("copy-address");
-  const addrEl = document.getElementById("token-address");
-
-  if (copyBtn && addrEl) {
-    copyBtn.addEventListener("click", () => {
-      const text = addrEl.textContent.trim();
-      navigator.clipboard.writeText(text).then(() => {
-        copyBtn.textContent = "Copied";
+    copyBtn.addEventListener("click", async () => {
+      const text = caAddress.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        copyBtn.textContent = "Copied!";
+        copyBtn.classList.add("copied");
         setTimeout(() => {
           copyBtn.textContent = "Copy";
-        }, 1200);
-      }).catch(() => {
-        copyBtn.textContent = "Error";
+          copyBtn.classList.remove("copied");
+        }, 1600);
+      } catch (err) {
+        // fallback
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        copyBtn.textContent = "Copied!";
+        copyBtn.classList.add("copied");
         setTimeout(() => {
           copyBtn.textContent = "Copy";
-        }, 1200);
-      });
+          copyBtn.classList.remove("copied");
+        }, 1600);
+      }
     });
-  }
-</script>
+  </script>
 </body>
 </html>
