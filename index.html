@@ -4,11 +4,206 @@
   <meta charset="UTF-8" />
   <title>DUDDY • $DDY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="DUDDY ($DDY) — Solana meme, one ticker, community built to outlast candles."
+  />
+
+  <!-- Manrope font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>DUDDY Landing</h1>
-  <img src="duddy-logo.png" alt="DUDDY logo" style="width:160px;border-radius:50%" />
-  <p>Run with DUDDY — Solana meme, one ticker, community built to outlast candles. 🐶✨</p>
+<div class="page-wrap">
+
+  <!-- NAVBAR -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <div class="nav-logo-wrap">
+          <div class="nav-logo-glow"></div>
+          <!-- make sure this file exists: duddy-logo.png -->
+          <img src="duddy-logo.png" alt="DUDDY Logo" class="nav-logo">
+        </div>
+        <div class="nav-text">
+          <div class="nav-title">DUDDY • $DDY</div>
+          <div class="nav-sub">Solana meme — one ticker</div>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <!-- Website button -> main site -->
+        <a
+          href="https://muhammadnoman47.github.io/ddy-website/"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-outline"
+        >
+          Website
+        </a>
+        <!-- Buy now (update link later) -->
+        <a
+          href="#"
+          class="btn btn-primary"
+          id="buy-btn"
+        >
+          Buy now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="max-w">
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <p class="hero-kicker">$DDY • Solana meme • One ticker</p>
+
+          <h1 class="hero-title">
+            Run with <span>DUDDY</span>.
+          </h1>
+
+          <p class="hero-sub">
+            Run with DUDDY — Solana meme, one ticker, community built to outlast candles. 🐶✨
+          </p>
+
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary">Buy now</a>
+            <a href="https://muhammadnoman47.github.io/ddy-website/" target="_blank" rel="noopener" class="btn btn-ghost">
+              Open full site
+            </a>
+          </div>
+
+          <!-- TOKEN ADDRESS BOX -->
+          <div class="address-card">
+            <div class="address-label">Token address</div>
+            <div class="address-row">
+              <!-- pump.fun / mint address placeholder -->
+              <code id="token-address">4W2jQLaQQH25HeKHiHAnxnan97pkVksZVj7rAgN7G9y8</code>
+              <button id="copy-address" class="btn-copy">Copy</button>
+            </div>
+            <div class="address-note">
+              Always verify the address from official DUDDY links before trading.
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: BIG FLOATING LOGO -->
+        <div class="hero-right">
+          <div class="hero-orbit">
+            <div class="orbit-glow"></div>
+            <div class="orbit-ring orbit-ring-1"></div>
+            <div class="orbit-ring orbit-ring-2"></div>
+            <div class="orbit-ring orbit-ring-3"></div>
+            <img src="duddy-logo.png" alt="DUDDY mascot" class="hero-mascot">
+          </div>
+        </div>
+      </section>
+
+      <!-- OPTIONAL CHART BLOCK (placeholder) -->
+      <section class="chart-section">
+        <div class="chart-header">
+          <div>
+            <h2 class="chart-title">$DDY market view</h2>
+            <p class="chart-sub">Plug in the live DEX chart when the pair is ready.</p>
+          </div>
+          <div class="chart-search">
+            <input
+              type="text"
+              placeholder="Search token / pair…"
+              class="chart-input"
+            />
+          </div>
+        </div>
+
+        <div class="chart-frame">
+          <!-- Replace this with live DEX iframe later -->
+          <div class="chart-placeholder">
+            <span>DEX chart embed coming soon.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOCIAL LINKS -->
+      <section class="social-section">
+        <h2 class="social-title">Stay where DUDDY lives</h2>
+        <p class="social-sub">
+          Follow the official channels — no fake groups, no random links.
+        </p>
+
+        <div class="social-row">
+          <a href="https://x.com/official_duddy" target="_blank" rel="noopener" class="social-btn social-x">
+            <div class="social-icon">𝕏</div>
+            <div class="social-text">
+              <span class="social-label">X / Twitter</span>
+              <span class="social-handle">@official_duddy</span>
+            </div>
+          </a>
+
+          <a href="https://t.me/duddyofficial_ddy" target="_blank" rel="noopener" class="social-btn social-tg">
+            <div class="social-icon">✈</div>
+            <div class="social-text">
+              <span class="social-label">Telegram</span>
+              <span class="social-handle">DUDDY Official</span>
+            </div>
+          </a>
+
+          <a href="https://discord.gg/aKgK2RDep" target="_blank" rel="noopener" class="social-btn social-dc">
+            <div class="social-icon">☰</div>
+            <div class="social-text">
+              <span class="social-label">Discord</span>
+              <span class="social-handle">DUDDY Hub</span>
+            </div>
+          </a>
+
+          <a href="https://whatsapp.com/channel/0029VbBmrsNHLHQY5eylWR2d" target="_blank" rel="noopener" class="social-btn social-wa">
+            <div class="social-icon">💬</div>
+            <div class="social-text">
+              <span class="social-label">WhatsApp</span>
+              <span class="social-handle">DUDDY Channel</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>DUDDY • $DDY — Solana meme, one ticker, community built to outlast candles.</span>
+      <span>© 2026 DUDDY • $DDY</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Copy token address
+  const copyBtn = document.getElementById("copy-address");
+  const addrEl = document.getElementById("token-address");
+
+  if (copyBtn && addrEl) {
+    copyBtn.addEventListener("click", () => {
+      const text = addrEl.textContent.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        copyBtn.textContent = "Copied";
+        setTimeout(() => {
+          copyBtn.textContent = "Copy";
+        }, 1200);
+      }).catch(() => {
+        copyBtn.textContent = "Error";
+        setTimeout(() => {
+          copyBtn.textContent = "Copy";
+        }, 1200);
+      });
+    });
+  }
+</script>
 </body>
 </html>
